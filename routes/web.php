@@ -20,3 +20,7 @@ Route::get('/', function () {
 Route::get('/home', function () {
     return view('home');
 })->middleware('auth');
+
+Route::get('/two-factor-recovery', function () {
+    return view('auth.two-factor-recovery');
+})->name('two.factor.recovery');

@@ -14,7 +14,6 @@
                 <button> Enable 2FA </button>
             </form>
         @else
-            <p> You have enabled two factor authentification </p>
             @if(session('status')=="two-factor-authentication-enabled")
                 <p> You have enabled 2FA ! Please scan the following QR Code into your phone authenticator application </p>
                 {!! auth()->user()->twoFactorQrCodeSvg() !!}
@@ -24,4 +23,9 @@
                     <p> {{ $recoveryCode }} </p>
                 @endforeach
             @endif
+            <form action="{{ route('two-factor.disable') }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button> Disable 2FA </button>
+            </form>
         @endif
