@@ -29,6 +29,6 @@
         @enderror
     </div>
     <div>
-        <button> Register </button>
+        <button> SIGN UP </button>
     </div>
 </form>
