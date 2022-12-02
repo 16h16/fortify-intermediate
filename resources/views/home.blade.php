@@ -23,6 +23,14 @@
                     <p> {{ $recoveryCode }} </p>
                 @endforeach
             @endif
+            <form action="{{ route('two-factor.confirm') }}" method="POST">
+                @csrf
+                <input type="text" name="code" placeholder="code">
+                @error('code')
+                <p>{{ $message }}</p>
+                @enderror
+                <button> Authentication </button>
+            </form>
             <form action="{{ route('two-factor.disable') }}" method="POST">
                 @csrf
                 @method('DELETE')
