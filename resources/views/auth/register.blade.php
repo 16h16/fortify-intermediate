@@ -1,25 +1,29 @@
 <form action="{{ route('register') }}" method="POST">
     @csrf
     <div>
-        <input type="text" name="name" placeholder="name">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name">
         @error('name')
         <p> {{$message}}</p>
         @enderror
     </div>
     <div>
-        <input type="email" name="email" placeholder="email">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email">
         @error('email')
         <p> {{$message}}</p>
         @enderror
     </div>
     <div>
-        <input type="password" name="password" placeholder="password">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password">
         @error('password')
         <p> {{$message}}</p>
         @enderror
     </div>
     <div>
-        <input type="password" name="password_confirmation" placeholder="password confirmation">
+        <label for="password_confirmation">Password confirmation</label>
+        <input type="password" name="password_confirmation" id="password_confirmation">
         @error('password')
         <p> {{$message}}</p>
         @enderror
