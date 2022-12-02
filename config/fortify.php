@@ -138,10 +138,16 @@ return [
         Features::updateProfileInformation(),
         Features::updatePasswords(),
         Features::twoFactorAuthentication([
+            'confirmPassword' => false,
+        ]),
+
+        /*
+        Features::twoFactorAuthentication([
             'confirm' => true,
             'confirmPassword' => true,
             // 'window' => 0,
         ]),
+        */
     ],
 
 ];

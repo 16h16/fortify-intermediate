@@ -7,7 +7,6 @@
         <p><a href="{{route('password.confirm')}}"> Password confirmation</a></p>
         <p><a href="{{route('password.confirmation')}}"> Password confirmation status</a></p>
 
-
         @if(!auth()->user()->two_factor_secret)
             <p> You have not enabled two factor authentification </p>
             <form action="{{ route('two-factor.enable') }}" method="POST">
