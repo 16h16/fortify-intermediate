@@ -1,6 +1,20 @@
-<form action="{{route('login')}}" method="POST">
+<form action="{{ route('login') }}" method="POST">
     @csrf
-    <input type="text" name="email">
-    <input type="password" name="password">
-    <button> SIGN IN</button>
+    <div>
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email">
+        @error('email')
+        <p> {{$message}}</p>
+        @enderror
+    </div>
+    <div>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password">
+        @error('password')
+        <p> {{$message}}</p>
+        @enderror
+    </div>
+    <div>
+        <button> SIGN IN </button>
+    </div>
 </form>
