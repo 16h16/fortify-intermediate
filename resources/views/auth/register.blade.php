@@ -31,4 +31,7 @@
     <div>
         <button> SIGN UP </button>
     </div>
+    <div>
+        <p>Already have an account? <a href="{{route('login')}}">Sign in</a></p>
+    </div>
 </form>

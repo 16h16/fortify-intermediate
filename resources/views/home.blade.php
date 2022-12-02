@@ -1,8 +1,10 @@
-@if (Route::has('login'))
-    @auth
+
         <form action="{{ route('logout') }}" method="POST">
             @csrf
             <button> Logout </button>
         </form>
-    @endauth
-@endif
+
+        <p><a href="{{route('password.confirm')}}"> Password confirmation</a></p>
+        <p><a href="{{route('password.confirmation')}}"> Password confirmation status</a></p>
+
+

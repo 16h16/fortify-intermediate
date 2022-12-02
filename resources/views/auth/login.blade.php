@@ -17,4 +17,7 @@
     <div>
         <button> SIGN IN </button>
     </div>
+    <div>
+        <p>Don't have an account? <a href="{{route('register')}}">Sign up</a></p>
+    </div>
 </form>
