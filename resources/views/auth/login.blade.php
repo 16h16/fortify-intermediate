@@ -1,3 +1,6 @@
+@if(session('status'))
+    <p>{{session('status')}}</p>
+@endif
 <form action="{{ route('login') }}" method="POST">
     @csrf
     <div>
@@ -20,4 +23,5 @@
     <div>
         <p>Don't have an account? <a href="{{route('register')}}">Sign up</a></p>
     </div>
+    <p>I don't remember my password. <a href="{{route('password.request')}}">Reset my password </a></p>
 </form>
