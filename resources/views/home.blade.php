@@ -1,4 +1,8 @@
 
+        @if(session('status'))
+            <p>{{session('status')}}</p>
+        @endif
+
         <form action="{{ route('logout') }}" method="POST">
             @csrf
             <button> Logout </button>
@@ -11,7 +15,14 @@
             <p> You have not enabled two factor authentification </p>
             <form action="{{ route('two-factor.enable') }}" method="POST">
                 @csrf
-                <button> Enable 2FA </button>
+                @if(is_null(session()->get('auth.password_confirmed_at')))
+                    <button> Enable 2FA </button>
+                    <p>[You will need to confirm password before]</p>
+                @else
+                    <button> Enable 2FA </button>
+                    <p>[You can enable now]</p>
+                @endif
+
             </form>
         @else
             @if(session('status')=="two-factor-authentication-enabled")
@@ -23,17 +34,28 @@
                     <p> {{ $recoveryCode }} </p>
                 @endforeach
             @endif
-            <form action="{{ route('two-factor.confirm') }}" method="POST">
-                @csrf
-                <input type="text" name="code" placeholder="code">
-                @error('code')
-                <p>{{ $message }}</p>
-                @enderror
-                <button> Authentication </button>
-            </form>
+            @if(is_null(auth()->user()->two_factor_confirmed_at))
+                <form action="{{ route('two-factor.confirm') }}" method="POST">
+                    @csrf
+                    <p> You need to confirm 2FA by using 6 digits !</p>
+                    <input type="text" name="code" placeholder="code">
+                    @error('code')
+                    <p>{{ $message }}</p>
+                    @enderror
+                    <button> Confirm 2FA </button>
+                </form>
+            @endif
             <form action="{{ route('two-factor.disable') }}" method="POST">
                 @csrf
                 @method('DELETE')
-                <button> Disable 2FA </button>
+                @if(is_null(session()->get('auth.password_confirmed_at')))
+                    <button> Disable 2FA </button>
+                    <p>[You will need to confirm password before]</p>
+                @else
+                    <button> Disable 2FA </button>
+                    <p>[Now you can disable]</p>
+                @endif
+
             </form>
         @endif
+
