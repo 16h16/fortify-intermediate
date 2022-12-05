@@ -15,11 +15,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('home');
-})->middleware(['auth', 'verified']);
+})->middleware(['auth', 'verified'])->name('home');
 
 Route::get('/home', function () {
     return view('home');
-})->middleware(['auth', 'verified']);
+})->middleware(['auth', 'verified'])->name('home');
 
 Route::get('/two-factor-recovery', function () {
     return view('auth.two-factor-recovery');

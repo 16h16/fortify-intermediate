@@ -22,6 +22,7 @@
             </div>
         </form>
     </div>
+    <p> Want you to come back ? <a href="{{route('login')}}" id="return"> Return to sign form</a></p>
     @error('email')
     <p id="error">❌ {{$message}}</p>
     @enderror

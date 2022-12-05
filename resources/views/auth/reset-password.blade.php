@@ -33,10 +33,10 @@
             </div>
         </form>
     </div>
+    <p>Want you to come back ? <a href="{{route('login')}}" id="return"> Return to sign form</a></p>
     @error('email')
     @if($message=="This password reset token is invalid.")
-        <p id="error">❌ Time elapsed <a href="{{route('login')}}"> Return to sign form</a> </p>
-
+        <p id="error">❌ Time elapsed ! </p>
     @else
         <p id="error">❌ {{$message}}</p>
     @endif
