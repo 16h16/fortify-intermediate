@@ -28,7 +28,7 @@
                             {!! auth()->user()->twoFactorQrCodeSvg() !!}
                         </div>
                         <div>
-                            <input type="text" name="code" placeholder="Confirmation code">
+                            <input type="text" name="code" placeholder="Confirmation code" required>
                         </div>
                         <div>
                             <button> Confirm </button>
