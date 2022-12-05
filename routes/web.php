@@ -24,3 +24,7 @@ Route::get('/home', function () {
 Route::get('/two-factor-recovery', function () {
     return view('auth.two-factor-recovery');
 })->name('two.factor.recovery');
+
+Route::get('/two-factor', function () {
+    return view('auth.two-factor');
+})->name('two.factor');
