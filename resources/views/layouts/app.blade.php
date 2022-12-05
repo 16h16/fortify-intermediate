@@ -9,7 +9,9 @@
         <title>@yield('title')</title>
     </head>
     <body>
+        @yield('status')
         @yield('content')
+        @yield('error')
         @yield('script')
     </body>
 </html>

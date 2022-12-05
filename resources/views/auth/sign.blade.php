@@ -8,8 +8,13 @@
     {{URL::asset('css/sign.css')}}
 @endsection
 
-@section('content')
+@section('status')
+    @if(session('status')=="Your password has been reset!")
+        <p id="status">✔ Your password has been successfully reset</p>
+    @endif
+@endsection
 
+@section('content')
     <div class="container" id="container">
         <div class="form-container sign-up-container">
             <form action="{{ route('register') }}" method="POST">
@@ -61,23 +66,20 @@
             </div>
         </div>
     </div>
-    @if(session('status')=="Your password has been reset!")
-        <p id="status">✔ Your password has been successfully reset</p>
+@endsection
+
+@section('error')
+    @if($errors->any())
+        <ul style="list-style-type: none; padding:0px">
+            @foreach($errors->all() as $error)
+                <li id="error">❌ {{$error}} </li>
+            @endforeach
+        </ul>
     @endif
-    @error('password')
-    <p id="error">❌ {{$message}}</p>
-    @enderror
-    @error('email')
-    <p id="error">❌ {{$message}}</p>
-    @enderror
-    @error('name')
-    <p id="error">❌ {{$message}}</p>
-    @enderror
+@endsection
 
-    @section('script')
-        <script src="{{URL::asset('js/sign.script')}}"></script>
-    @endsection
-
+@section('script')
+    <script src="{{URL::asset('js/sign.script')}}"></script>
 @endsection
 
 

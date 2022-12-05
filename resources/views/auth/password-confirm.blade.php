@@ -8,6 +8,12 @@
     Password confirmation
 @endsection
 
+@section('status')
+    @if(session('status'))
+        <p>{{session('status')}}</p>
+    @endif
+@endsection
+
 @section('content')
     <div class="container" id="container">
         <form action="{{ route('password.confirm') }}" method="POST">
@@ -23,14 +29,17 @@
             </div>
         </form>
     </div>
-
-    @error('password')
-    <p id="error">❌ {{$message}}</p>
-    @enderror
-    @if(session('status'))
-        <p>{{session('status')}}</p>
-    @endif
     <p> Want you to come back ? <a href="{{route('home')}}" id="return"> Return to home</a></p>
+@endsection
+
+@section('error')
+    @if($errors->any())
+        <ul style="list-style-type: none; padding:0px">
+            @foreach($errors->all() as $error)
+                <li id="error">❌ {{$error}} </li>
+            @endforeach
+        </ul>
+    @endif
 @endsection
 
 

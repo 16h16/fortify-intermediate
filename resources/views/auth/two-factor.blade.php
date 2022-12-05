@@ -8,6 +8,18 @@
     Two factor authentication
 @endsection
 
+@section('status')
+    @if(session('status')=="two-factor-authentication-enabled")
+        <p id="status">✔ Two factor authentication successfully enabled</p>
+    @endif
+    @if(session('status')=="two-factor-authentication-disabled")
+        <p id="status">✔ Two factor authentication successfully disabled</p>
+    @endif
+    @if(session('status')=="two-factor-authentication-confirmed")
+        <p id="status">✔ Two factor authentication successfully confirmed</p>
+    @endif
+@endsection
+
 @section('content')
     <div class="container" id="container">
         @if(!auth()->user()->two_factor_secret)
@@ -59,22 +71,18 @@
             </form>
         @endif
     </div>
-
-    @error('code')
-    <p>{{ $message }}</p>
-    @enderror
-    @if(session('status')=="two-factor-authentication-enabled")
-        <p id="status">✔ Two factor authentication successfully enabled</p>
-    @endif
-    @if(session('status')=="two-factor-authentication-disabled")
-        <p id="status">✔ Two factor authentication successfully disabled</p>
-    @endif
-    @if(session('status')=="two-factor-authentication-confirmed")
-        <p id="status">✔ Two factor authentication successfully confirmed</p>
-    @endif
     <p> Want you to come back ? <a href="{{route('home')}}" id="return"> Return to home</a></p>
 @endsection
 
+@section('error')
+    @if($errors->any())
+        <ul style="list-style-type: none; padding:0px">
+            @foreach($errors->all() as $error)
+                <li id="error">❌ {{$error}} </li>
+            @endforeach
+        </ul>
+    @endif
+@endsection
 
 
 

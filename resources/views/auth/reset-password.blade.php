@@ -8,24 +8,30 @@
     Reset password
 @endsection
 
+@section('status')
+    @if(session('status'))
+        <p>{{session('status')}}</p>
+    @endif
+@endsection
+
 @section('content')
     <div class="container" id="container">
         <form action="{{ route('password.update') }}" method="POST">
             @csrf
             <h1> Reset password </h1>
             <p> Enter a new password and tap the button below to reset your actual password. </p>
-            <input type="hidden" name="token" value="{{ $request->route('token') }}">
-            <input type="hidden" name="email" value="{{ $request->email }}">
+            <input type="hidden" name="token" value="{{ $request->route('token') }}" required>
+            <input type="hidden" name="email" value="{{ $request->email }}" required>
             <div>
-                <input type="email" value="{{ $request->email }}" disabled>
+                <input type="email" value="{{ $request->email }}" disabled required>
             </div>
 
             <div>
-                <input type="password" name="password" placeholder="Password">
+                <input type="password" name="password" placeholder="Password" required>
             </div>
 
             <div>
-                <input type="password" name="password_confirmation" placeholder="Password confirmation">
+                <input type="password" name="password_confirmation" placeholder="Password confirmation" required>
             </div>
 
             <div>
@@ -34,22 +40,19 @@
         </form>
     </div>
     <p>Want you to come back ? <a href="{{route('login')}}" id="return"> Return to sign form</a></p>
-    @error('email')
-    @if($message=="This password reset token is invalid.")
-        <p id="error">❌ Time elapsed ! </p>
-    @else
-        <p id="error">❌ {{$message}}</p>
-    @endif
-    @enderror
-    @error('password')
-        @if($message=="This password reset token is invalid.")
-            <p id="error">❌Timeout </p>
-        @else
-            <p id="error">❌ {{$message}}</p>
-        @endif
-    @enderror
-    @if(session('status'))
-        <p>{{session('status')}}</p>
+@endsection
+
+@section('error')
+    @if($errors->any())
+        <ul style="list-style-type: none; padding:0px">
+            @foreach($errors->all() as $error)
+                @if($error == "This password reset token is invalid.")
+                    <li id="error">❌ Time elapsed ! Please send a new reset link. </li>
+                @else
+                    <li id="error">❌ {{$error}} </li>
+                @endif
+            @endforeach
+        </ul>
     @endif
 @endsection
 
