@@ -13,9 +13,11 @@
         <form action="{{ route('password.confirm') }}" method="POST">
             @csrf
             <h1> Password confirmation </h1>
+            <p>Enter your password and tap the button below to confirm your password.</p>
             <div>
                 <input type="password" name="password" placeholder="Password" required>
             </div>
+
             <div>
                 <button> Confirm password </button>
             </div>

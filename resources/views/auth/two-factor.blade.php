@@ -15,12 +15,9 @@
                 @csrf
                 <h1>Two factor authentication</h1>
                 <p> Tap the button below to enable two factor authentication. </p>
-                @if(is_null(session()->get('auth.password_confirmed_at')))
-                    <button> Enable 2FA </button>
-                    <p>[You will need to confirm password before]</p>
-                @else
+                <div>
                     <button> Enable </button>
-                @endif
+                </div>
             </form>
         @elseif(is_null(auth()->user()->two_factor_confirmed_at))
                     <form action="{{ route('two-factor.confirm') }}" method="POST">
@@ -44,7 +41,7 @@
                 <h1>Two factor authentication</h1>
 
                 <div>
-                    <p> Please store this recovery codes in a secure location </p>
+                    <p> Please store these recovery codes in a secure location. </p>
                     <ul style="list-style-type: none; padding:0px">
                         @foreach(json_decode(decrypt(auth()->user()->two_factor_recovery_codes)) as $recoveryCode)
                             <li> {{ $recoveryCode }} </li>
@@ -55,15 +52,9 @@
                 <div>
                     <h2>Disable two factor authentication</h2>
                     <p> Tap the button below to disable two factor authentication. </p>
-                    @if(is_null(session()->get('auth.password_confirmed_at')))
-                        <div>
-                            <button> Disable 2FA </button>
-                        </div>
-                    @else
-                        <div>
-                            <button> Disable 2FA </button>
-                        </div>
-                    @endif
+                    <div>
+                        <button> Disable 2FA </button>
+                    </div>
                 </div>
             </form>
         @endif
