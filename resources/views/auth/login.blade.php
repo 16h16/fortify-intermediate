@@ -38,7 +38,6 @@
     <title>Document</title>
 </head>
 <body>
-<h2>Weekly Coding Challenge #1: Sign in/up Form</h2>
 <div class="container" id="container">
     <div class="form-container sign-up-container">
         <form action="#">
@@ -85,7 +84,7 @@
         </div>
     </div>
 </div>
-<script src="script.js"></script>
+<script src="{{URL::asset('js/sign.script')}}"></script>
 </body>
 </html>
 
