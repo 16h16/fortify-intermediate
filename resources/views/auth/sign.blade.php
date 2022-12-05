@@ -9,9 +9,6 @@
 @endsection
 
 @section('content')
-    @if(session('status'))
-        <p>{{session('status')}}</p>
-    @endif
 
     <div class="container" id="container">
         <div class="form-container sign-up-container">
@@ -64,6 +61,9 @@
             </div>
         </div>
     </div>
+    @if(session('status')=="Your password has been reset!")
+        <p id="status">✔ Your password has been successfully reset</p>
+    @endif
     @error('password')
     <p id="error">❌ {{$message}}</p>
     @enderror
