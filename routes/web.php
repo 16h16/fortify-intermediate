@@ -39,4 +39,8 @@ Route::get('/login-github', [SocialController::class, 'redirectGithub'])->name('
 
 Route::post('/password-creation', [SocialController::class, 'passwordCreation'])->name('password.creation');
 
+Route::view('/profile/edit', 'auth.edit')->middleware(['verified', 'auth'])->name('profile.edit');
+
+
+
 

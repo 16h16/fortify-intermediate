@@ -8,5 +8,7 @@
         </form>
 
         <p><a href="{{route('two.factor')}}">Two factor authentication</a></p>
+        <p><a href="{{route('profile.edit')}}">Profile edit</a></p>
+
 
     <p> Welcome {{auth()->user()->name}}</p>
