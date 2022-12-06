@@ -53,7 +53,7 @@
                 <h1>Two factor authentication</h1>
 
                 <div>
-                    <p> Please store these recovery codes in a secure location. </p>
+                    <p> Please store these recovery codes in a secure location. These codes are unique, and destroyed when used to be replaced by a new one </p>
                     <ul style="list-style-type: none; padding:0px">
                         @foreach(json_decode(decrypt(auth()->user()->two_factor_recovery_codes)) as $recoveryCode)
                             <li> {{ $recoveryCode }} </li>
@@ -63,7 +63,7 @@
 
                 <div>
                     <h2>Disable two factor authentication</h2>
-                    <p> Tap the button below to disable two factor authentication. </p>
+                    <p> Recovery codes and QR Code will be destroyed permanly deleted </p>
                     <div>
                         <button> Disable 2FA </button>
                     </div>
