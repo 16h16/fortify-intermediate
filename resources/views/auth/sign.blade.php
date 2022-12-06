@@ -46,7 +46,7 @@
                 <input type="email" placeholder="Email" name="email" @if(Cookie::has('email')) value="{{Cookie::get('email')}}" @endif required/>
                 <input type="password" placeholder="Password" name="password" @if(Cookie::has('password')) value="{{Cookie::get('password')}}" @endif required/>
                 <label style="font-size: 0.8em" for="rememberme">Remember me</label>
-                <input type="checkbox" name="rememberme" id="rememberme" @if(Cookie::has('email') && !empty(Cookie::get('email'))) checked @endif>
+                <input type="checkbox" name="rememberme" id="rememberme" @if(Cookie::has('email')) checked @endif>
                 <a href="{{route('password.request')}}">Forgot your password?</a>
                 <button>Sign In</button>
             </form>
