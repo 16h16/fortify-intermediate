@@ -9,3 +9,4 @@
 
         <p><a href="{{route('two.factor')}}">Two factor authentication</a></p>
 
+    <p> Welcome {{auth()->user()->name}}</p>

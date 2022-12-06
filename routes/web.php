@@ -31,5 +31,11 @@ Route::get('/two-factor', function () {
 })->name('two.factor');
 
 
-Route::get('/login-google', [SocialController::class, 'redirect'])->name('login.google');
-Route::get('/login-google/callback', [SocialController::class, 'callback'])->name('login.google.callback');
+Route::get('/login-google', [SocialController::class, 'redirectGoogle'])->name('login.google');
+Route::get('/login-google/callback', [SocialController::class, 'callbackGoogle'])->name('login.google.callback');
+
+Route::get('/login-github', [SocialController::class, 'redirectGithub'])->name('login.github');
+Route::get('/login-github/callback', [SocialController::class, 'callbackGithub'])->name('login.github.callback');
+
+Route::get('/login-github', [SocialController::class, 'redirectFacebook'])->name('login.facebook');
+Route::get('/login-github/callback', [SocialController::class, 'callbackFacebook'])->name('login.facebook.callback');

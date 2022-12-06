@@ -22,8 +22,8 @@
                 <h1>Create Account</h1>
                 <div class="social-container">
                     <a href="{{route('login.google')}}" class="social"><img width="25" height="auto" src="{{URL::asset('image/google_logo.png')}}"></a>
-                    <a href="#" class="social">Facebook</a>
-                    <a href="#" class="social">GitHub</a>
+
+                    <a href="{{route('login.facebook')}}" class="social"><img width="25" height="auto" src="{{URL::asset('image/facebook_logo.png')}}"></a>
                 </div>
                 <span>or use your email for registration</span>
                 <input type="text" placeholder="Name" name="name" required />
@@ -40,8 +40,9 @@
                 <h1>Sign in</h1>
                 <div class="social-container">
                     <a href="{{route('login.google')}}" class="social"><img width="25" height="auto" src="{{URL::asset('image/google_logo.png')}}"></a>
-                    <a href="#" class="social">Facebook</a>
-                    <a href="#" class="social">GitHub</a>
+
+                    <a href="{{route('login.facebook')}}" class="social"><img width="25" height="auto" src="{{URL::asset('image/facebook_logo.png')}}"></a>
+                    <a href="{{route('login.github')}}" class="social"><img width="25" height="auto" src="{{URL::asset('image/github_logo.png')}}"></a>
                 </div>
                 <span>or use your account</span>
                 <input type="email" placeholder="Email" name="email" required/>
