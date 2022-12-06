@@ -66,35 +66,5 @@ class SocialController extends Controller
             dd("error");
         }
     }
-
-    public function redirectFacebookb(){
-        return Socialite::driver('facebook')->redirect();
-    }
-
-    public function callbackFacebook(){
-        dd(Socialite::driver('facebook')->user());
-        try{
-            $user_facebook = Socialite::driver('facebook')->user();
-            $user = User::where('email', $user_facebook->getEmail())->first();
-
-            if(!$user){
-                $new_user = User::create([
-                    "name" => $user_facebook->getName(),
-                    "email" => $user_facebook->getEmail(),
-                    "facebook_id" => $user_facebook->getId(),
-                ]);
-
-                Auth::login($new_user);
-                return to_route('home');
-            }else{
-                Auth::login($user);
-                return to_route('home');
-            }
-        }catch(Exception $e){
-            dd("error");
-        }
-    }
-
-
 }
 
