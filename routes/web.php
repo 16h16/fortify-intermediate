@@ -36,3 +36,7 @@ Route::get('/login-google/callback', [SocialController::class, 'callbackGoogle']
 
 Route::get('/login-github/callback', [SocialController::class, 'callbackGithub'])->name('login.github.callback');
 Route::get('/login-github', [SocialController::class, 'redirectGithub'])->name('login.github');
+
+Route::post('/password-creation', [SocialController::class, 'passwordCreation'])->name('password.creation');
+
+
